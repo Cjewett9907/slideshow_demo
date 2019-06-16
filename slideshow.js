@@ -1,10 +1,6 @@
 
-window.onload = function()
-{ 
+window.onload = function(){ 
    
-
-
-
 function slideShow(){
     let images = document.getElementsByClassName("slideshow-div-img")
     let i = 0
@@ -28,13 +24,15 @@ function slideShow(){
 function translation(){
     let images2 = document.getElementsByClassName("slideshow-div-img2")
     let i = 0
-    let pos = 150
+
+    // displacement is how many pixels per move
+    let displacement = 150
     images2[i].style.left = "0px";
 
     setInterval(function(){
 
-        if (pos > 300){  
-            pos = 0
+        if (displacement > 300){  
+            displacement = 0
             images2[i].style.display = "none"
 
             if (i === images2.length - 1){       
@@ -44,8 +42,8 @@ function translation(){
             }
             images2[i].style.display = "block"
         }
-        images2[i].style.left = (pos) + "px"
-        pos += 150
+        images2[i].style.left = (displacement) + "px"
+        displacement += 150
         
     }, 1000);
 }
@@ -53,14 +51,13 @@ function translation(){
 function fader(){
     let images3 = document.getElementsByClassName("slideshow-div-img3")
     let i = 0
-    let fadeVar = 9999
+    let fadeVar = 999
     let fadeSwitch = -1
     images3[i].style.opacity = "0." + fadeVar ;
-    console.log(fadeVar)
     
         setInterval(function(){
-            if (fadeVar < 1000 ) {  
-                fadeVar = 1001 
+            if (fadeVar < 100 ) {  
+                fadeVar = 101 
                 fadeSwitch *= -1 
                 images3[i].style.display = "none"
                     if (i === images3.length - 1){       
@@ -72,7 +69,7 @@ function fader(){
                 
                 images3[i].style.display = "block"
             }
-            if (fadeVar > 10000){
+            if (fadeVar > 1000){
                 images3[i].style.opacity = "1.0"
                 fadeSwitch *= -1
             } else {
@@ -80,7 +77,9 @@ function fader(){
             }
             
             console.log("opacity is", "0." + fadeVar)
-            fadeVar += (500 * fadeSwitch) 
+
+            // controls the rate of fading 50 = 0.05 opacity per tick 
+            fadeVar += (50 * fadeSwitch) 
              
         }, 100);
     
