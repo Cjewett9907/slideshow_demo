@@ -13,6 +13,8 @@
 
 img {
     /* width: 100%; */
+    position: relative;
+    left: 0px;
     max-width: 200px;
     max-height: 160px;
     padding-top: 10px;
